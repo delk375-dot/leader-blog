@@ -11,6 +11,10 @@ import { COLLECTIONS } from "@/data/knowledge";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import config from "@/config";
 
+type Props = {
+  collection: (typeof COLLECTIONS)[number];
+};
+
 export const getStaticPaths = (() =>
   COLLECTIONS.map(collection => ({
     params: { collection: collection.slug },
