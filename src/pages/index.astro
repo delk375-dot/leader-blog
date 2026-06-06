@@ -1,12 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import Socials from "@/components/Socials.astro";
 import Card from "@/components/Card.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import KnowledgeGraphNav from "@/components/KnowledgeGraphNav.astro";
@@ -16,7 +14,7 @@ import { CATEGORIES } from "@/data/categories";
 import { SERVICE_CTA, TOPIC_HUBS } from "@/data/knowledge";
 import config from "@/config";
 
-const { socials, posts: postsConfig } = config;
+const { posts: postsConfig } = config;
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
@@ -40,18 +38,8 @@ const homePath = getRelativeLocaleUrl(locale, "");
     <section id="hero" class="border-border border-b pt-10 pb-8 sm:pt-14">
       <div class="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
         <span class="border-border border-b pb-1 uppercase tracking-[0.18em]">
-          Executive knowledge base
+          БАЗА ЗНАНЬ ДЛЯ КЕРІВНИКІВ
         </span>
-        <a
-          target="_blank"
-          href={`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}rss.xml`}
-          class="inline-flex items-center gap-2 hover:text-accent"
-          aria-label="RSS Feed"
-          title="RSS Feed"
-        >
-          <IconRss width={18} height={18} class="stroke-accent stroke-3" />
-          <span>RSS</span>
-        </a>
       </div>
 
       <h1 class="my-6 max-w-4xl text-4xl leading-tight font-semibold sm:text-6xl">
@@ -69,7 +57,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
           href={getRelativeLocaleUrl(locale, "topics")}
           class="bg-accent text-accent-foreground px-4 py-2 hover:opacity-90"
         >
-          Дослідити knowledge hubs
+          Дослідити тематичні центри
           <IconArrowRight class="inline-block rtl:-rotate-180" />
         </LinkButton>
         <LinkButton
@@ -79,29 +67,18 @@ const homePath = getRelativeLocaleUrl(locale, "");
           Карта категорій
         </LinkButton>
       </div>
-
-      {
-        socials.length > 0 && (
-          <div class="mt-8 flex max-sm:flex-col sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap text-muted-foreground sm:mb-0">
-              {t.home.socialLinks}:
-            </div>
-            <Socials />
-          </div>
-        )
-      }
     </section>
 
     <section id="knowledge-map" class="border-border border-b py-10">
-      <h2 class="text-2xl font-semibold tracking-wide">Knowledge graph</h2>
+      <h2 class="text-2xl font-semibold tracking-wide">Карта знань</h2>
       <p class="mt-2 mb-5 text-muted-foreground">
-        Внутрішня структура для SEO, AI search, semantic indexing і long-tail запитів.
+        Внутрішня структура для SEO, пошуку AI, семантичного індексування і довгих запитів.
       </p>
       <KnowledgeGraphNav />
     </section>
 
     <section id="featured-topics" class="border-border border-b py-10">
-      <h2 class="text-2xl font-semibold tracking-wide">Featured topics</h2>
+      <h2 class="text-2xl font-semibold tracking-wide">Ключові теми</h2>
       <ul class="mt-5 grid gap-4 sm:grid-cols-2">
         {featuredTopics.map(topic => (
           <li class="border-border bg-muted/30 border p-4">
@@ -109,10 +86,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
               href={getRelativeLocaleUrl(locale, `topics/${topic.slug}`)}
               class="group block"
             >
-              <p class="text-muted-foreground text-sm uppercase tracking-[0.14em]">
-                {topic.title}
-              </p>
-              <h3 class="mt-2 text-lg font-semibold group-hover:text-accent">
+              <h3 class="text-lg font-semibold group-hover:text-accent">
                 {topic.ukrainianTitle}
               </h3>
               <p class="mt-2 text-sm leading-6 text-muted-foreground">
@@ -125,7 +99,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
     </section>
 
     <section id="categories" class="border-border border-b py-10">
-      <h2 class="text-2xl font-semibold tracking-wide">Content clusters</h2>
+      <h2 class="text-2xl font-semibold tracking-wide">Тематичні кластери</h2>
       <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {CATEGORIES.map(category => (
           <li class="border-border bg-muted/30 p-4">
