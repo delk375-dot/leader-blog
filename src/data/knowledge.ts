@@ -1,5 +1,15 @@
 import type { CategorySlug } from "./categories";
 
+type TopicHubDefinition = {
+  slug: string;
+  title: string;
+  ukrainianTitle: string;
+  description: string;
+  categories: CategorySlug[];
+  featured: boolean;
+  starterQuestions: string[];
+};
+
 export const TOPIC_HUBS = [
   {
     slug: "psychology-of-power",
@@ -71,7 +81,7 @@ export const TOPIC_HUBS = [
       "Як психологія впливає на правову позицію?",
     ],
   },
-] as const;
+] satisfies ReadonlyArray<TopicHubDefinition>;
 
 export type TopicHubSlug = (typeof TOPIC_HUBS)[number]["slug"];
 
