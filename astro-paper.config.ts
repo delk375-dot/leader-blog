@@ -29,10 +29,7 @@ export default defineAstroPaperConfig({
     },
     search: "pagefind",
   },
-  socials: [
-    { name: "github", url: "https://github.com/delk375-dot/leader-blog" },
-    { name: "mail", url: "mailto:editorial@example.com" },
-  ],
+  socials: [],
   shareLinks: [
     { name: "facebook", url: "https://www.facebook.com/sharer.php?u=" },
     { name: "x", url: "https://x.com/intent/post?url=" },
