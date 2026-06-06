@@ -69,10 +69,10 @@ const homePath = getRelativeLocaleUrl(locale, "");
           <IconArrowRight class="inline-block rtl:-rotate-180" />
         </LinkButton>
         <LinkButton
-          href={getRelativeLocaleUrl(locale, "tags")}
+          href={getRelativeLocaleUrl(locale, "categories")}
           class="border-border border px-4 py-2 hover:text-accent"
         >
-          Теми
+          Категорії
         </LinkButton>
       </div>
 
@@ -101,7 +101,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
         {CATEGORIES.map(category => (
           <li class="border-border bg-muted/30 p-4">
             <a
-              href={getRelativeLocaleUrl(locale, `tags/${category.slug}`)}
+              href={getRelativeLocaleUrl(locale, `categories/${category.slug}`)}
               class="group block"
             >
               <h3 class="text-lg font-semibold group-hover:text-accent">
