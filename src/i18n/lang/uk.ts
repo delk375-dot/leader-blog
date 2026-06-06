@@ -4,7 +4,7 @@ export default {
   nav: {
     home: "Головна",
     posts: "Статті",
-    tags: "Теми",
+    tags: "Категорії",
     about: "Про медіа",
     archives: "Архів",
     search: "Пошук",
