@@ -28,12 +28,12 @@
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.42;
+    opacity: 0.32;
     background-image:
-      linear-gradient(color-mix(in srgb, var(--foreground) 5%, transparent) 1px, transparent 1px),
-      linear-gradient(90deg, color-mix(in srgb, var(--foreground) 5%, transparent) 1px, transparent 1px),
-      radial-gradient(circle at 18% 24%, color-mix(in srgb, var(--foreground) 7%, transparent) 0 1px, transparent 1.5px),
-      radial-gradient(circle at 74% 32%, color-mix(in srgb, var(--accent) 10%, transparent) 0 1px, transparent 1.5px);
+      linear-gradient(color-mix(in srgb, var(--foreground) 4%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--foreground) 4%, transparent) 1px, transparent 1px),
+      radial-gradient(circle at 18% 24%, color-mix(in srgb, var(--foreground) 6%, transparent) 0 1px, transparent 1.5px),
+      radial-gradient(circle at 74% 32%, color-mix(in srgb, var(--accent) 9%, transparent) 0 1px, transparent 1.5px);
     background-size: 72px 72px, 72px 72px, 180px 180px, 220px 220px;
     mask-image: linear-gradient(180deg, black 0%, black 54%, transparent 100%);
   }
@@ -116,10 +116,10 @@
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(color-mix(in srgb, var(--foreground) 6%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--foreground) 6%, transparent) 1px, transparent 1px);
-  background-size: 42px 42px;
-  opacity: 0.32;
+    linear-gradient(color-mix(in srgb, var(--foreground) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--foreground) 5%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.2;
   mask-image: linear-gradient(135deg, black, transparent 72%);
 }
 
@@ -129,15 +129,15 @@
 .article-cover-panel::after {
   content: "";
   position: absolute;
-  inset: 12% -8% -18% 30%;
+  inset: 9% -8% -18% 32%;
   pointer-events: none;
-  opacity: 0.22;
+  opacity: 0.18;
   background:
-    radial-gradient(circle at 20% 35%, color-mix(in srgb, var(--accent) 36%, transparent) 0 2px, transparent 2.5px),
-    radial-gradient(circle at 56% 18%, color-mix(in srgb, var(--foreground) 22%, transparent) 0 2px, transparent 2.5px),
-    radial-gradient(circle at 74% 62%, color-mix(in srgb, var(--foreground) 18%, transparent) 0 2px, transparent 2.5px),
-    linear-gradient(28deg, transparent 19%, color-mix(in srgb, var(--foreground) 13%, transparent) 20%, transparent 21%),
-    linear-gradient(145deg, transparent 33%, color-mix(in srgb, var(--accent) 13%, transparent) 34%, transparent 35%);
+    radial-gradient(circle at 20% 35%, color-mix(in srgb, var(--accent) 34%, transparent) 0 2px, transparent 2.5px),
+    radial-gradient(circle at 58% 18%, color-mix(in srgb, var(--foreground) 18%, transparent) 0 2px, transparent 2.5px),
+    radial-gradient(circle at 76% 62%, color-mix(in srgb, var(--foreground) 16%, transparent) 0 2px, transparent 2.5px),
+    linear-gradient(28deg, transparent 19%, color-mix(in srgb, var(--foreground) 11%, transparent) 20%, transparent 21%),
+    linear-gradient(145deg, transparent 33%, color-mix(in srgb, var(--accent) 12%, transparent) 34%, transparent 35%);
 }
 
 .knowledge-map-shell > *,
@@ -183,60 +183,137 @@
 }
 
 .article-visual {
+  aspect-ratio: 16 / 10;
   display: block;
-  min-height: 8.75rem;
+  min-height: 9.5rem;
   border: 1px solid var(--border);
   background:
-    radial-gradient(circle at 18% 22%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 15rem),
-    linear-gradient(135deg, color-mix(in srgb, var(--muted) 42%, transparent), transparent 64%),
-    color-mix(in srgb, var(--muted) 38%, var(--background));
+    radial-gradient(circle at 72% 30%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 11rem),
+    linear-gradient(135deg, color-mix(in srgb, var(--foreground) 88%, transparent), color-mix(in srgb, var(--foreground) 76%, var(--accent)) 72%),
+    var(--foreground);
+  color: var(--background);
 }
 
 .article-visual img {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 8.75rem;
+  min-height: 9.5rem;
   object-fit: cover;
-  filter: saturate(0.72) contrast(0.98);
+  object-position: center;
+  filter: saturate(0.82) contrast(1.04);
+}
+
+.article-visual-symbol {
+  position: absolute;
+  inset-inline-end: 0.75rem;
+  top: 0.35rem;
+  color: color-mix(in srgb, var(--accent) 74%, var(--background));
+  font-size: clamp(4rem, 11vw, 7.25rem);
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.78;
+}
+
+.article-visual-title {
+  position: absolute;
+  inset-inline: 0.9rem 1.6rem;
+  bottom: 2.1rem;
+  color: var(--background);
+  font-size: clamp(1.15rem, 3vw, 1.65rem);
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 0.98;
+  text-transform: uppercase;
+  text-wrap: balance;
 }
 
 .article-visual-label {
   position: absolute;
-  inset-inline: 1rem;
-  bottom: 0.9rem;
-  color: color-mix(in srgb, var(--foreground) 76%, transparent);
+  inset-inline: 0.95rem;
+  bottom: 0.85rem;
+  color: color-mix(in srgb, var(--background) 76%, transparent);
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.18em;
   line-height: 1.4;
   text-transform: uppercase;
 }
 
 .article-cover-panel {
-  min-height: 13rem;
+  aspect-ratio: 16 / 7;
+  min-height: 15rem;
   border: 1px solid var(--border);
   background:
-    radial-gradient(circle at 78% 16%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 18rem),
-    radial-gradient(circle at 18% 82%, color-mix(in srgb, var(--foreground) 8%, transparent), transparent 16rem),
-    color-mix(in srgb, var(--muted) 22%, var(--background));
+    radial-gradient(circle at 68% 34%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 20rem),
+    linear-gradient(135deg, color-mix(in srgb, var(--foreground) 92%, transparent), color-mix(in srgb, var(--foreground) 76%, var(--accent)) 78%),
+    var(--foreground);
+  color: var(--background);
+}
+
+.article-cover-panel .article-visual-symbol {
+  inset-inline-end: 2rem;
+  top: 1rem;
+  font-size: clamp(7rem, 18vw, 14rem);
+}
+
+.article-cover-panel .article-visual-title {
+  inset-inline: 2rem 12rem;
+  bottom: 2.5rem;
+  font-size: clamp(2.1rem, 6vw, 4.8rem);
+  max-width: 42rem;
 }
 
 .article-cover-panel .article-visual-label {
-  display: none;
+  inset-inline: 2rem;
+  top: 1.4rem;
+  bottom: auto;
+  color: color-mix(in srgb, var(--background) 72%, transparent);
+}
+
+.article-cover-panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 15rem;
+  object-fit: cover;
+  object-position: center;
 }
 
 @media (max-width: 640px) {
   body::before {
-    opacity: 0.24;
+    opacity: 0.2;
     background-size: 56px 56px, 56px 56px, 160px 160px, 180px 180px;
   }
 
   .article-visual {
-    min-height: 7rem;
+    min-height: 8.5rem;
+  }
+
+  .article-visual-title {
+    inset-inline-end: 2.25rem;
+    font-size: 1.22rem;
   }
 
   .article-cover-panel {
-    min-height: 9rem;
+    aspect-ratio: 4 / 3;
+    min-height: 13rem;
+  }
+
+  .article-cover-panel .article-visual-symbol {
+    inset-inline-end: 0.9rem;
+    top: 1.5rem;
+    font-size: 6.5rem;
+  }
+
+  .article-cover-panel .article-visual-title {
+    inset-inline: 1rem 5.5rem;
+    bottom: 1.6rem;
+    font-size: clamp(1.65rem, 9vw, 2.45rem);
+  }
+
+  .article-cover-panel .article-visual-label {
+    inset-inline: 1rem;
+    top: 1rem;
   }
 }
