@@ -27,7 +27,7 @@ const posts = await getCollection("posts", ({ data }) => !data.draft && data.ser
 const seriesPosts = getSortedPosts(posts);
 ---
 
-<Layout title={`Серія: ${series} | ${config.site.title}`} description={`Матеріали серії ${series} на Leader Blog.`}>
+<Layout title={`Серія: ${series} | ${config.site.title}`} description={`Матеріали серії ${series} на Тіньовій карті.`}>
   <Header />
   <Breadcrumb />
   <Main pageTitle={`Серія: ${series}`} pageDesc="Послідовність матеріалів, які розкривають одну управлінську або психологічну проблему під різними кутами.">
