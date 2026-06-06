@@ -29,7 +29,9 @@ const categoryPosts = getSortedPosts(
     return data.category === category.slug || tags.includes(category.slug);
   })
 );
-const relatedHubs = TOPIC_HUBS.filter(topic => topic.categories.includes(category.slug));
+const relatedHubs = TOPIC_HUBS.filter(topic =>
+  (topic.categories as readonly string[]).includes(category.slug)
+);
 ---
 
 <Layout
