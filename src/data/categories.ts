@@ -1,4 +1,4 @@
-export const CATEGORY_SLUGS = [
+const CATEGORY_SLUG_VALUES = [
   "leadership",
   "social-systems",
   "negotiations",
@@ -12,7 +12,12 @@ export const CATEGORY_SLUGS = [
   "social-elevators",
 ] as const;
 
-export type CategorySlug = (typeof CATEGORY_SLUGS)[number];
+export type CategorySlug = (typeof CATEGORY_SLUG_VALUES)[number];
+
+export const CATEGORY_SLUGS = [...CATEGORY_SLUG_VALUES] as [
+  CategorySlug,
+  ...CategorySlug[],
+];
 
 export const CATEGORIES = [
   {
