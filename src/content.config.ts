@@ -34,7 +34,7 @@ const posts = defineCollection({
           "conflict-diagnostics",
         ])
         .optional(),
-      ogImage: image().or(z.string()).optional(),
+      ogImage: z.string().or(image()).optional(),
       description: z.string(),
       canonicalURL: z.string().optional(),
       hideEditPost: z.boolean().optional(),
