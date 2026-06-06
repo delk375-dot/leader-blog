@@ -13,7 +13,7 @@ type TopicHubDefinition = {
 export const TOPIC_HUBS = [
   {
     slug: "psychology-of-power",
-    title: "Psychology of Power",
+    title: "Психологія влади",
     ukrainianTitle: "Психологія влади",
     description:
       "Як влада змінює мислення, комунікацію, страх, межі і відповідальність керівників.",
@@ -27,7 +27,7 @@ export const TOPIC_HUBS = [
   },
   {
     slug: "social-elevators",
-    title: "Social Elevators",
+    title: "Соціальні ліфти",
     ukrainianTitle: "Соціальні ліфти",
     description:
       "Механізми статусного руху: кар'єра, доступ, репутація, закриті клуби і символічний капітал.",
@@ -41,7 +41,7 @@ export const TOPIC_HUBS = [
   },
   {
     slug: "negotiation-anatomy",
-    title: "Negotiation Anatomy",
+    title: "Анатомія переговорів",
     ukrainianTitle: "Анатомія переговорів",
     description:
       "Розбір переговорів як системи влади, інтересів, страхів, меж і прихованих ставок.",
@@ -55,7 +55,7 @@ export const TOPIC_HUBS = [
   },
   {
     slug: "toxic-politeness",
-    title: "Toxic Politeness",
+    title: "Токсична ввічливість",
     ukrainianTitle: "Токсична ввічливість",
     description:
       "Коли чемність стає інструментом уникання, пасивної агресії і легального саботажу.",
@@ -69,7 +69,7 @@ export const TOPIC_HUBS = [
   },
   {
     slug: "legal-psychology",
-    title: "Legal Psychology",
+    title: "Правова психологія",
     ukrainianTitle: "Правова психологія",
     description:
       "Поведінка людей у юридичних конфліктах: свідчення, тиск, відповідальність, довіра і ризик.",
@@ -88,14 +88,14 @@ export type TopicHubSlug = (typeof TOPIC_HUBS)[number]["slug"];
 export const COLLECTIONS = [
   {
     slug: "executive-power-field-guide",
-    title: "Executive Power Field Guide",
+    title: "Польовий гід із влади для керівників",
     description:
       "Практичні матеріали для керівників про владу, межі, комунікацію і системний тиск.",
     hubs: ["psychology-of-power", "negotiation-anatomy"],
   },
   {
     slug: "systems-and-status",
-    title: "Systems and Status",
+    title: "Системи і статус",
     description:
       "Колекція про соціальні системи, статус, ліфти, блокування і репутаційні механізми.",
     hubs: ["social-elevators", "psychology-of-power"],
@@ -163,25 +163,25 @@ export const EXECUTIVE_CASES = [
 export const SERVICE_CTA = [
   {
     slug: "executive-coaching",
-    title: "Executive coaching",
+    title: "Коучинг для керівників",
     description:
       "Індивідуальна робота з владою, рішеннями, межами, комунікацією і тиском ролі.",
   },
   {
     slug: "communication-audit",
-    title: "Communication audit",
+    title: "Аудит комунікації",
     description:
       "Аудит управлінської комунікації, точок тертя, пасивної агресії і втрати довіри.",
   },
   {
     slug: "legal-consulting",
-    title: "Legal consulting",
+    title: "Правова консультація",
     description:
       "Консультаційна рамка для правових конфліктів, ризиків, свідчень і переговорної позиції.",
   },
   {
     slug: "conflict-diagnostics",
-    title: "Conflict diagnostics",
+    title: "Діагностика конфлікту",
     description:
       "Діагностика прихованих інтересів, ескалації, ролей, меж і системних вигод конфлікту.",
   },
