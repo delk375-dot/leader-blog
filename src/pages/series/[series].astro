@@ -10,11 +10,15 @@ import Footer from "@/components/Footer.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import config from "@/config";
 
-const isString = (value: unknown): value is string => typeof value === "string";
-
 export const getStaticPaths = (async () => {
   const posts = await getCollection("posts", ({ data }) => !data.draft && Boolean(data.series));
-  const series = [...new Set(posts.map(post => post.data.series).filter(isString))];
+  const series = [
+    ...new Set(
+      posts
+        .map(post => post.data.series)
+        .filter((value): value is string => typeof value === "string")
+    ),
+  ];
   return series.map(seriesSlug => ({ params: { series: seriesSlug } }));
 }) satisfies GetStaticPaths;
 
