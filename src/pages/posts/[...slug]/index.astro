@@ -73,10 +73,13 @@ const {
   tags,
   hideEditPost,
   cta,
+  category,
+  contentType,
 } = post.data;
 
 const { Content } = await render(post);
 const allPosts = await getCollection("posts", ({ data }) => !data.draft);
+const articleVisualLabel = category ?? contentType ?? "analysis";
 
 let ogImageUrl: string | undefined;
 
@@ -135,6 +138,10 @@ const ogImage = ogImageUrl
         |
       </span>
       <EditPost {hideEditPost} {post} class="max-sm:hidden" />
+    </div>
+
+    <div class="article-cover-panel mt-8" aria-hidden="true">
+      <span class="article-visual-label">{articleVisualLabel}</span>
     </div>
 
     <article
