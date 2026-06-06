@@ -13,7 +13,24 @@ const { variant: Heading = "h2", id, data, filePath } = Astro.props;
 const { title, description, ogImage, category, contentType, ...props } = data;
 const postUrl = getPostUrl(id, filePath, Astro.currentLocale);
 const imageSource = typeof ogImage === "string" ? ogImage : ogImage?.src;
-const visualLabel = category ?? contentType ?? "analysis";
+const visualLabels: Record<string, string> = {
+  leadership: "лідерство",
+  psychology: "психологія",
+  negotiations: "переговори",
+  manipulation: "маніпуляції",
+  "legal-psychology": "правова психологія",
+  "social-systems": "соціальні системи",
+  conflicts: "конфлікти",
+  communication: "комунікація",
+  "status-and-power": "статус і влада",
+  "organizational-psychology": "організаційна психологія",
+  "toxic-politeness": "токсична ввічливість",
+  "social-elevators": "соціальні ліфти",
+  pillar_article: "велике дослідження",
+  article: "дослідження",
+};
+const visualKey = category ?? contentType ?? "article";
+const visualLabel = visualLabels[visualKey] ?? visualKey.replaceAll("-", " ");
 ---
 
 <li class="border-border border-t py-6 first:border-t-0 sm:py-8">
