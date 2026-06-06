@@ -13,11 +13,11 @@ const locale = Astro.currentLocale ?? config.site.lang;
 
 <Layout
   title={`Колекції | ${config.site.title}`}
-  description="Article collections Leader Blog для масштабування серій матеріалів і тематичних reading paths."
+  description="Колекції Leader Blog для масштабування серій матеріалів і тематичних маршрутів читання."
 >
   <Header />
   <Breadcrumb />
-  <Main pageTitle="Колекції" pageDesc="Тематичні reading paths для керівників: влада, статус, системи, переговори і комунікація.">
+  <Main pageTitle="Колекції" pageDesc="Тематичні маршрути читання для керівників: влада, статус, системи, переговори і комунікація.">
     <ul class="grid gap-4 sm:grid-cols-2">
       {COLLECTIONS.map(collection => (
         <li class="border-border bg-muted/30 border p-4">
