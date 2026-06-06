@@ -11,6 +11,15 @@
     scrollbar-width: auto;
     scrollbar-color: var(--color-muted) transparent;
   }
+  html {
+    background: var(--background);
+  }
+  body {
+    background:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 14%, transparent), transparent 34rem),
+      linear-gradient(180deg, color-mix(in srgb, var(--muted) 18%, transparent), transparent 32rem),
+      var(--background);
+  }
   a,
   button {
     @apply outline-accent outline-offset-1 focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
@@ -22,7 +31,7 @@
 }
 
 @utility max-w-app {
-  @apply max-w-3xl;
+  @apply max-w-4xl;
 }
 
 @utility app-layout {
