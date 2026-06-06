@@ -3,10 +3,10 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://delk375-dot.github.io/leader-blog/",
-    title: "Leader Blog",
+    title: "Тіньова карта",
     description:
-      "Українське медіа про психологію лідерства, переговори, маніпуляції, правову психологію та соціальні системи.",
-    author: "Leader Blog Editorial",
+      "Інтелектуальна платформа про переговори, владу, соціальні механіки, статус, конфлікти та прихований вплив.",
+    author: "Тіньова карта Editorial",
     profile: "https://github.com/delk375-dot/leader-blog",
     ogImage: "default-og.jpg",
     lang: "uk",
@@ -35,6 +35,6 @@ export default defineAstroPaperConfig({
     { name: "x", url: "https://x.com/intent/post?url=" },
     { name: "telegram", url: "https://t.me/share/url?url=" },
     { name: "linkedin", url: "https://www.linkedin.com/shareArticle?mini=true&url=" },
-    { name: "mail", url: "mailto:?subject=Leader%20Blog&body=" },
+    { name: "mail", url: "mailto:?subject=%D0%A2%D1%96%D0%BD%D1%8C%D0%BE%D0%B2%D0%B0%20%D0%BA%D0%B0%D1%80%D1%82%D0%B0&body=" },
   ],
 });
