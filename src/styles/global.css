@@ -223,8 +223,7 @@
 }
 
 .article-cover-panel .article-visual-label {
-  bottom: auto;
-  top: 1rem;
+  display: none;
 }
 
 @media (max-width: 640px) {
