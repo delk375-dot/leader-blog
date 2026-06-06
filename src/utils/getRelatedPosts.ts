@@ -6,6 +6,11 @@ const normalize = (value: string | undefined) =>
 
 const normalizeList = (values: string[] = []) => values.map(normalize);
 
+const getIdSlug = (id: string) => {
+  const segments = id.split("/");
+  return segments[segments.length - 1];
+};
+
 export function getRelatedPosts(
   currentPost: CollectionEntry<"posts">,
   posts: CollectionEntry<"posts">[],
@@ -23,7 +28,7 @@ export function getRelatedPosts(
     .map(post => {
       const tags = normalizeList(post.data.tags);
       const topics = normalizeList(post.data.topics);
-      const slug = normalize(post.id.split("/").at(-1));
+      const slug = normalize(getIdSlug(post.id));
 
       let score = 0;
       if (post.data.category && post.data.category === currentPost.data.category) score += 5;
