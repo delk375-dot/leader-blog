@@ -14,23 +14,46 @@ const { title, description, ogImage, category, contentType, ...props } = data;
 const postUrl = getPostUrl(id, filePath, Astro.currentLocale);
 const imageSource = typeof ogImage === "string" ? ogImage : ogImage?.src;
 const visualLabels: Record<string, string> = {
-  leadership: "лідерство",
+  leadership: "влада",
   psychology: "психологія",
   negotiations: "переговори",
   manipulation: "маніпуляції",
-  "legal-psychology": "правова психологія",
-  "social-systems": "соціальні системи",
-  conflicts: "конфлікти",
+  "legal-psychology": "право",
+  "social-systems": "система",
+  conflicts: "конфлікт",
   communication: "комунікація",
-  "status-and-power": "статус і влада",
-  "organizational-psychology": "організаційна психологія",
-  "toxic-politeness": "токсична ввічливість",
-  "social-elevators": "соціальні ліфти",
-  pillar_article: "велике дослідження",
-  article: "дослідження",
+  "status-and-power": "статус",
+  "organizational-psychology": "організація",
+  "toxic-politeness": "ввічливість",
+  "social-elevators": "ліфти",
+  pillar_article: "досьє",
+  article: "аналіз",
+};
+const visualSymbols: Record<string, string> = {
+  leadership: "♜",
+  psychology: "◉",
+  negotiations: "⇄",
+  manipulation: "◌",
+  "legal-psychology": "⚖",
+  "social-systems": "⌬",
+  conflicts: "×",
+  communication: "//",
+  "status-and-power": "◆",
+  "organizational-psychology": "▦",
+  "toxic-politeness": "!",
+  "social-elevators": "↟",
+  pillar_article: "⌬",
+  article: "◆",
 };
 const visualKey = category ?? contentType ?? "article";
 const visualLabel = visualLabels[visualKey] ?? visualKey.replaceAll("-", " ");
+const visualSymbol = visualSymbols[visualKey] ?? "◆";
+const coverTitle = title
+  .replace(/["“”]/g, "")
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 6)
+  .join(" ");
 ---
 
 <li class="border-border border-t py-6 first:border-t-0 sm:py-8">
@@ -44,7 +67,11 @@ const visualLabel = visualLabels[visualKey] ?? visualKey.replaceAll("-", " ");
         imageSource ? (
           <img src={imageSource} alt="" loading="lazy" decoding="async" />
         ) : (
-          <span class="article-visual-label">{visualLabel}</span>
+          <>
+            <span class="article-visual-symbol" aria-hidden="true">{visualSymbol}</span>
+            <span class="article-visual-title">{coverTitle}</span>
+            <span class="article-visual-label">{visualLabel}</span>
+          </>
         )
       }
     </a>
