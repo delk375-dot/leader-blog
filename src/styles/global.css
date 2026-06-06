@@ -16,8 +16,7 @@
   }
   body {
     background:
-      radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 14%, transparent), transparent 34rem),
-      linear-gradient(180deg, color-mix(in srgb, var(--muted) 18%, transparent), transparent 32rem),
+      linear-gradient(180deg, color-mix(in srgb, var(--muted) 10%, transparent), transparent 28rem),
       var(--background);
   }
   a,
