@@ -29,13 +29,15 @@ const posts = await getCollection("posts", ({ data }) => !data.draft);
 const topicPosts = getSortedPosts(
   posts.filter(({ data }) =>
     data.topics.includes(topic.slug) ||
-    (data.category ? topic.categories.includes(data.category) : false) ||
+    (data.category
+      ? (topic.categories as readonly string[]).includes(data.category)
+      : false) ||
     data.series === topic.slug ||
     data.collection === topic.slug
   )
 );
 const relatedCategories = CATEGORIES.filter(category =>
-  topic.categories.includes(category.slug)
+  (topic.categories as readonly string[]).includes(category.slug)
 );
 ---
 
