@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Card from "@/components/Card.astro";
+import Footer from "@/components/Footer.astro";
+import { CATEGORIES } from "@/data/categories";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+import { slugifyAll } from "@/utils/slugify";
+import config from "@/config";
+
+export const getStaticPaths = (() =>
+  CATEGORIES.map(category => ({
+    params: { category: category.slug },
+    props: { category },
+  }))) satisfies GetStaticPaths;
+
+const { category } = Astro.props;
+const posts = await getCollection("posts", ({ data }) => !data.draft);
+const categoryPosts = getSortedPosts(
+  posts.filter(({ data }) => {
+    const tags = slugifyAll(data.tags);
+    return data.category === category.slug || tags.includes(category.slug);
+  })
+);
+---
+
+<Layout
+  title={`${category.title} | ${config.site.title}`}
+  description={category.description}
+>
+  <Header />
+
+  <Breadcrumb />
+
+  <Main pageTitle={category.title} pageDesc={category.description}>
+    {
+      categoryPosts.length > 0 ? (
+        <ul>
+          {categoryPosts.map(data => (
+            <Card {...data} />
+          ))}
+        </ul>
+      ) : (
+        <p class="text-muted-foreground">
+          Категорія готова до першої публікації.
+        </p>
+      )
+    }
+  </Main>
+
+  <Footer />
+</Layout>
