@@ -1,3 +1,14 @@
+export const CATEGORY_SLUGS = [
+  "leadership",
+  "psychology",
+  "negotiations",
+  "manipulation",
+  "legal-psychology",
+  "social-systems",
+] as const;
+
+export type CategorySlug = (typeof CATEGORY_SLUGS)[number];
+
 export const CATEGORIES = [
   {
     slug: "leadership",
@@ -35,11 +46,8 @@ export const CATEGORIES = [
     description:
       "Інституції, групова динаміка, ієрархії, норми та суспільна довіра.",
   },
-] as const;
-
-export type CategorySlug = (typeof CATEGORIES)[number]["slug"];
-
-export const CATEGORY_SLUGS = CATEGORIES.map(category => category.slug) as [
-  CategorySlug,
-  ...CategorySlug[],
-];
+] satisfies ReadonlyArray<{
+  slug: CategorySlug;
+  title: string;
+  description: string;
+}>;
