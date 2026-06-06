@@ -34,7 +34,7 @@ const categoryPosts = getSortedPosts(
   })
 );
 const relatedHubs = TOPIC_HUBS.filter(topic =>
-  topic.categories.includes(category.slug)
+  (topic.categories as readonly string[]).includes(category.slug)
 );
 ---
 
