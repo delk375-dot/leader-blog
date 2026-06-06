@@ -87,6 +87,13 @@ export type TopicHubSlug = (typeof TOPIC_HUBS)[number]["slug"];
 
 export const COLLECTIONS = [
   {
+    slug: "executive-psychology",
+    title: "Психологія керівника",
+    description:
+      "Pillar-матеріали про владу, переговори, статус, конфлікти і поведінку соціальних систем для керівників.",
+    hubs: ["psychology-of-power", "negotiation-anatomy"],
+  },
+  {
     slug: "executive-power-field-guide",
     title: "Польовий гід із влади для керівників",
     description:
