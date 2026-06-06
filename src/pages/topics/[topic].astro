@@ -21,17 +21,18 @@ export const getStaticPaths = (() =>
 
 const { topic } = Astro.props;
 const locale = Astro.currentLocale ?? config.site.lang;
+const topicCategories = topic.categories as readonly string[];
 const posts = await getCollection("posts", ({ data }) => !data.draft);
 const topicPosts = getSortedPosts(
   posts.filter(({ data }) =>
     data.topics.includes(topic.slug) ||
-    (data.category ? topic.categories.includes(data.category) : false) ||
+    (data.category ? topicCategories.includes(data.category) : false) ||
     data.series === topic.slug ||
     data.collection === topic.slug
   )
 );
 const relatedCategories = CATEGORIES.filter(category =>
-  topic.categories.includes(category.slug)
+  topicCategories.includes(category.slug)
 );
 ---
 
