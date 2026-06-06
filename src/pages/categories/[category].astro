@@ -49,7 +49,7 @@ const relatedHubs = TOPIC_HUBS.filter(topic =>
   <Main pageTitle={category.title} pageDesc={category.description}>
     <section class="border-border bg-muted/20 border p-4">
       <h2 class="text-xl font-semibold">Семантичний профіль</h2>
-      <p class="mt-2 text-muted-foreground">Intent: {category.intent}</p>
+      <p class="mt-2 text-muted-foreground">Намір: {category.intent}</p>
       <ul class="mt-3 flex flex-wrap gap-2">
         {category.keywords.map(keyword => (
           <li class="border-border border px-2 py-1 text-sm">{keyword}</li>
@@ -59,7 +59,7 @@ const relatedHubs = TOPIC_HUBS.filter(topic =>
 
     {relatedHubs.length > 0 && (
       <section class="mt-8">
-        <h2 class="text-xl font-semibold">Topic hubs</h2>
+        <h2 class="text-xl font-semibold">Тематичні центри</h2>
         <ul class="mt-3 grid gap-3 sm:grid-cols-2">
           {relatedHubs.map(topic => (
             <li class="border-border border p-3">
