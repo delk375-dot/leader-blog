@@ -18,6 +18,22 @@ const posts = defineCollection({
       draft: z.boolean().optional(),
       category: z.enum(CATEGORY_SLUGS).optional(),
       tags: z.array(z.string()).default(["others"]),
+      topics: z.array(z.string()).default([]),
+      series: z.string().optional(),
+      collection: z.string().optional(),
+      contentType: z
+        .enum(["article", "executive-case", "glossary", "framework"])
+        .default("article"),
+      relatedPosts: z.array(z.string()).default([]),
+      recommendedReading: z.array(z.string()).default([]),
+      cta: z
+        .enum([
+          "executive-coaching",
+          "communication-audit",
+          "legal-consulting",
+          "conflict-diagnostics",
+        ])
+        .optional(),
       ogImage: image().or(z.string()).optional(),
       description: z.string(),
       canonicalURL: z.string().optional(),
