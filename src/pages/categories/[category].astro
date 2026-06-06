@@ -14,6 +14,10 @@ import { getSortedPosts } from "@/utils/getSortedPosts";
 import { slugifyAll } from "@/utils/slugify";
 import config from "@/config";
 
+type Props = {
+  category: (typeof CATEGORIES)[number];
+};
+
 export const getStaticPaths = (() =>
   CATEGORIES.map(category => ({
     params: { category: category.slug },
@@ -30,7 +34,7 @@ const categoryPosts = getSortedPosts(
   })
 );
 const relatedHubs = TOPIC_HUBS.filter(topic =>
-  (topic.categories as readonly string[]).includes(category.slug)
+  topic.categories.includes(category.slug)
 );
 ---
 
