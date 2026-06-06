@@ -1,5 +1,5 @@
 ---
-author: Leader Blog Editorial
+author: Тіньова карта Editorial
 pubDatetime: 2026-06-06T12:00:00.000+03:00
 title: "Template: executive knowledge article"
 featured: false
