@@ -42,7 +42,7 @@ export default {
     tagDesc: "Усі матеріали за темою",
 
     tagsTitle: "Теми",
-    tagsDesc: "Редакційна карта тем і категорій Leader Blog.",
+    tagsDesc: "Редакційна карта тем і категорій Тіньової карти.",
 
     postsTitle: "Статті",
     postsDesc:
@@ -52,7 +52,7 @@ export default {
     archivesDesc: "Хронологія опублікованих матеріалів.",
 
     searchTitle: "Пошук",
-    searchDesc: "Пошук за матеріалами Leader Blog.",
+    searchDesc: "Пошук за матеріалами Тіньової карти.",
   },
   a11y: {
     skipToContent: "Перейти до контенту",
