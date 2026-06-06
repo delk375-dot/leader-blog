@@ -10,22 +10,43 @@ type Props = {
 
 const { variant: Heading = "h2", id, data, filePath } = Astro.props;
 
-const { title, description, ...props } = data;
+const { title, description, ogImage, category, contentType, ...props } = data;
+const postUrl = getPostUrl(id, filePath, Astro.currentLocale);
+const imageSource = typeof ogImage === "string" ? ogImage : ogImage?.src;
+const visualLabel = category ?? contentType ?? "analysis";
 ---
 
-<li class="my-6">
-  <a
-    href={getPostUrl(id, filePath, Astro.currentLocale)}
-    class:list={[
-      "text-accent inline-block text-lg font-medium",
-      "decoration-dashed underline-offset-4 hover:underline",
-      "focus-visible:no-underline focus-visible:underline-offset-0",
-    ]}
-  >
-    <Heading transition:name={toTransitionName(title)}>
-      {title}
-    </Heading>
-  </a>
-  <Datetime {...props} />
-  <p>{description}</p>
+<li class="border-border border-t py-6 first:border-t-0 sm:py-8">
+  <div class="grid gap-4 sm:grid-cols-[10.5rem_minmax(0,1fr)] sm:gap-6">
+    <a
+      href={postUrl}
+      class="article-visual focus-visible:no-underline"
+      aria-label={title}
+    >
+      {
+        imageSource ? (
+          <img src={imageSource} alt="" loading="lazy" decoding="async" />
+        ) : (
+          <span class="article-visual-label">{visualLabel}</span>
+        )
+      }
+    </a>
+
+    <div class="min-w-0">
+      <a
+        href={postUrl}
+        class:list={[
+          "text-accent inline-block text-lg font-medium",
+          "decoration-dashed underline-offset-4 hover:underline",
+          "focus-visible:no-underline focus-visible:underline-offset-0",
+        ]}
+      >
+        <Heading transition:name={toTransitionName(title)}>
+          {title}
+        </Heading>
+      </a>
+      <Datetime {...props} />
+      <p class="mt-2 leading-7 text-muted-foreground">{description}</p>
+    </div>
+  </div>
 </li>
