@@ -9,9 +9,11 @@ import Footer from "@/components/Footer.astro";
 import Socials from "@/components/Socials.astro";
 import Card from "@/components/Card.astro";
 import LinkButton from "@/components/LinkButton.astro";
+import KnowledgeGraphNav from "@/components/KnowledgeGraphNav.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { useTranslations } from "@/i18n";
 import { CATEGORIES } from "@/data/categories";
+import { SERVICE_CTA, TOPIC_HUBS } from "@/data/knowledge";
 import config from "@/config";
 
 const { socials, posts: postsConfig } = config;
@@ -23,6 +25,7 @@ const posts = await getCollection("posts", ({ data }) => !data.draft);
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const featuredTopics = TOPIC_HUBS.filter(topic => topic.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
 ---
 
@@ -37,7 +40,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
     <section id="hero" class="border-border border-b pt-10 pb-8 sm:pt-14">
       <div class="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
         <span class="border-border border-b pb-1 uppercase tracking-[0.18em]">
-          Психологія влади і рішень
+          Executive knowledge base
         </span>
         <a
           target="_blank"
@@ -51,28 +54,29 @@ const homePath = getRelativeLocaleUrl(locale, "");
         </a>
       </div>
 
-      <h1 class="my-6 max-w-3xl text-4xl leading-tight font-semibold sm:text-6xl">
+      <h1 class="my-6 max-w-4xl text-4xl leading-tight font-semibold sm:text-6xl">
         Leader Blog
       </h1>
 
-      <p class="max-w-3xl text-lg leading-8 text-muted-foreground sm:text-xl">
-        Українське інтелектуальне медіа про лідерство, психологію,
-        переговори, маніпуляції, правову психологію та соціальні системи.
+      <p class="max-w-4xl text-lg leading-8 text-muted-foreground sm:text-xl">
+        Темна інтелектуальна медіаплатформа для керівників: психологія влади,
+        переговори, правова психологія, соціальні системи, статус, конфлікти і
+        точна комунікація.
       </p>
 
       <div class="mt-8 flex flex-wrap gap-3">
         <LinkButton
-          href={getRelativeLocaleUrl(locale, "posts")}
+          href={getRelativeLocaleUrl(locale, "topics")}
           class="bg-accent text-accent-foreground px-4 py-2 hover:opacity-90"
         >
-          Читати статті
+          Дослідити knowledge hubs
           <IconArrowRight class="inline-block rtl:-rotate-180" />
         </LinkButton>
         <LinkButton
           href={getRelativeLocaleUrl(locale, "categories")}
           class="border-border border px-4 py-2 hover:text-accent"
         >
-          Категорії
+          Карта категорій
         </LinkButton>
       </div>
 
@@ -88,16 +92,41 @@ const homePath = getRelativeLocaleUrl(locale, "");
       }
     </section>
 
+    <section id="knowledge-map" class="border-border border-b py-10">
+      <h2 class="text-2xl font-semibold tracking-wide">Knowledge graph</h2>
+      <p class="mt-2 mb-5 text-muted-foreground">
+        Внутрішня структура для SEO, AI search, semantic indexing і long-tail запитів.
+      </p>
+      <KnowledgeGraphNav />
+    </section>
+
+    <section id="featured-topics" class="border-border border-b py-10">
+      <h2 class="text-2xl font-semibold tracking-wide">Featured topics</h2>
+      <ul class="mt-5 grid gap-4 sm:grid-cols-2">
+        {featuredTopics.map(topic => (
+          <li class="border-border bg-muted/30 border p-4">
+            <a
+              href={getRelativeLocaleUrl(locale, `topics/${topic.slug}`)}
+              class="group block"
+            >
+              <p class="text-muted-foreground text-sm uppercase tracking-[0.14em]">
+                {topic.title}
+              </p>
+              <h3 class="mt-2 text-lg font-semibold group-hover:text-accent">
+                {topic.ukrainianTitle}
+              </h3>
+              <p class="mt-2 text-sm leading-6 text-muted-foreground">
+                {topic.description}
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
     <section id="categories" class="border-border border-b py-10">
-      <div class="mb-6 flex items-end justify-between gap-4">
-        <div>
-          <h2 class="text-2xl font-semibold tracking-wide">Редакційні категорії</h2>
-          <p class="mt-2 text-muted-foreground">
-            Постійна структура для майбутніх аналітичних матеріалів.
-          </p>
-        </div>
-      </div>
-      <ul class="grid gap-4 sm:grid-cols-2">
+      <h2 class="text-2xl font-semibold tracking-wide">Content clusters</h2>
+      <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {CATEGORIES.map(category => (
           <li class="border-border bg-muted/30 p-4">
             <a
@@ -111,6 +140,20 @@ const homePath = getRelativeLocaleUrl(locale, "");
                 {category.description}
               </p>
             </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section id="services" class="border-border border-b py-10">
+      <h2 class="text-2xl font-semibold tracking-wide">Практичні формати</h2>
+      <ul class="mt-5 grid gap-4 sm:grid-cols-2">
+        {SERVICE_CTA.map(service => (
+          <li class="border-border bg-muted/30 border p-4">
+            <h3 class="text-lg font-semibold">{service.title}</h3>
+            <p class="mt-2 text-sm leading-6 text-muted-foreground">
+              {service.description}
+            </p>
           </li>
         ))}
       </ul>
@@ -155,7 +198,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
             {t.home.recentPosts}
           </h2>
           <p class="mt-3 text-muted-foreground">
-            Редакційна структура готова до першої публікації.
+            Архітектура готова до перших матеріалів.
           </p>
         </section>
       )
