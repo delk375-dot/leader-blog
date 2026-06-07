@@ -1,4 +1,5 @@
 import type { CollectionEntry } from "astro:content";
+import { postFilter } from "./postFilter";
 import { slugifyStr } from "./slugify";
 
 const normalize = (value: string | undefined) =>
@@ -24,7 +25,7 @@ export function getRelatedPosts(
   ]);
 
   return posts
-    .filter(post => post.id !== currentPost.id && !post.data.draft)
+    .filter(post => post.id !== currentPost.id && postFilter(post))
     .map(post => {
       const tags = normalizeList(post.data.tags);
       const topics = normalizeList(post.data.topics);
