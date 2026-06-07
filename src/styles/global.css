@@ -288,6 +288,23 @@
   object-position: center;
 }
 
+.article-cover-panel-image {
+  aspect-ratio: 16 / 9;
+  min-height: auto;
+  background: color-mix(in srgb, var(--muted) 30%, var(--background));
+}
+
+.article-cover-panel-image::before,
+.article-cover-panel-image::after {
+  display: none;
+}
+
+.article-cover-panel-image img {
+  min-height: 0;
+  object-fit: contain;
+  filter: saturate(0.92) contrast(1.02);
+}
+
 @media (max-width: 640px) {
   body::before {
     opacity: 0.2;
@@ -324,5 +341,10 @@
     inset-inline: 1rem 5.5rem;
     bottom: 1.6rem;
     font-size: clamp(1.65rem, 9vw, 2.45rem);
+  }
+
+  .article-cover-panel-image {
+    aspect-ratio: 16 / 9;
+    min-height: auto;
   }
 }
