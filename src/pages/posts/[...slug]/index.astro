@@ -80,14 +80,10 @@ const {
 const { Content } = await render(post);
 const allPosts = await getCollection("posts", ({ data }) => !data.draft);
 const articleVisualLabel = category ?? contentType ?? "analysis";
+const coverImageUrl =
+  typeof initOgImage === "string" ? initOgImage : initOgImage?.src;
 
-let ogImageUrl: string | undefined;
-
-if (typeof initOgImage === "string") {
-  ogImageUrl = initOgImage;
-} else if (initOgImage?.src) {
-  ogImageUrl = initOgImage.src;
-}
+let ogImageUrl = coverImageUrl;
 
 if (!ogImageUrl && config.features.dynamicOgImage) {
   const postUrl = getPostUrl(post.id, post.filePath, locale).replace(
@@ -140,8 +136,20 @@ const ogImage = ogImageUrl
       <EditPost {hideEditPost} {post} class="max-sm:hidden" />
     </div>
 
-    <div class="article-cover-panel mt-8" aria-hidden="true">
-      <span class="article-visual-label">{articleVisualLabel}</span>
+    <div
+      class:list={[
+        "article-cover-panel mt-8",
+        { "article-cover-panel-image": Boolean(coverImageUrl) },
+      ]}
+      aria-hidden="true"
+    >
+      {
+        coverImageUrl ? (
+          <img src={coverImageUrl} alt="" loading="eager" decoding="async" />
+        ) : (
+          <span class="article-visual-label">{articleVisualLabel}</span>
+        )
+      }
     </div>
 
     <article
