@@ -1,0 +1,33 @@
+name: Scheduled Cloudflare Pages rebuild
+
+on:
+  # GitHub Actions cron uses UTC, not Europe/Kyiv.
+  # These values target Kyiv standard time (UTC+02):
+  # 09:05 Kyiv -> 07:05 UTC
+  # 14:05 Kyiv -> 12:05 UTC
+  # 19:05 Kyiv -> 17:05 UTC
+  # 23:55 Kyiv -> 21:55 UTC
+  # During Kyiv summer time (UTC+03), adjust one hour earlier if exact local time is required.
+  schedule:
+    - cron: "5 7 * * *"
+    - cron: "5 12 * * *"
+    - cron: "5 17 * * *"
+    - cron: "55 21 * * *"
+  workflow_dispatch:
+
+jobs:
+  trigger-cloudflare-rebuild:
+    name: Trigger Cloudflare Pages rebuild
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger deploy hook
+        env:
+          CLOUDFLARE_DEPLOY_HOOK_URL: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$CLOUDFLARE_DEPLOY_HOOK_URL" ]; then
+            echo "CLOUDFLARE_DEPLOY_HOOK_URL secret is not set."
+            exit 1
+          fi
+
+          curl --fail --silent --show-error --request POST "$CLOUDFLARE_DEPLOY_HOOK_URL"
