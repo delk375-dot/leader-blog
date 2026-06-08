@@ -1,7 +1,7 @@
 ---
 title: "Лояльність як валюта влади: чому слухняність не дорівнює довірі"
 description: "Системний аналіз лояльності, слухняності, довіри, влади і прихованих обмінів у командах та організаціях."
-pubDatetime: "2026-06-08T14:00:00+03:00"
+pubDatetime: 2026-06-08T14:00:00+03:00
 category: organizational-psychology
 topics:
   - organizational-psychology
