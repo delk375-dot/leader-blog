@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import { getSortedPosts } from "./getSortedPosts";
+import { postFilter } from "./postFilter";
 
 /**
  * Centralized public post query.
@@ -9,5 +10,7 @@ import { getSortedPosts } from "./getSortedPosts";
  */
 export async function getPublishedPosts() {
   const posts = await getCollection("posts");
-  return getSortedPosts(posts);
+  const publishedPosts = posts.filter(postFilter);
+
+  return getSortedPosts(publishedPosts);
 }
